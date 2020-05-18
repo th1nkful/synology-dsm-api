@@ -1,5 +1,5 @@
 {
-  "name": "synology-api",
+  "name": "synology-dsm-api",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
