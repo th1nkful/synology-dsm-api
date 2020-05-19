@@ -1,4 +1,4 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 import { TaskStatus, TaskErrorTypes } from './taskStatus';
 
@@ -26,21 +26,21 @@ interface TaskDetail {
   total_peers: Number;
   connected_seeders: Number;
   connected_leechers: Number;
-};
+}
 
 interface TaskTransfer {
   size_downloaded: String;
   size_uploaded: String;
   speed_download: Number;
   speed_upload: Number;
-};
+}
 
 interface TaskFile {
   filename: String;
   size: String;
   size_downloaded: String
   priority: 'skip' | 'low' | 'high' | 'normal';
-};
+}
 
 interface TaskTracker {
   url: String;
@@ -48,7 +48,7 @@ interface TaskTracker {
   update_timer: Number;
   seeds: Number;
   peers: Number;
-};
+}
 
 interface TaskPeer {
   address: String;
@@ -56,13 +56,13 @@ interface TaskPeer {
   progress: Number;
   speed_download: Number;
   speed_upload: Number;
-};
+}
 
 interface TaskStatusExtra {
   error_detail: String;
   error_detail_friendly?: String;
   unzip_progress: Number;
-};
+}
 
 interface TaskAdditional {
   detail: TaskDetail;
@@ -70,7 +70,7 @@ interface TaskAdditional {
   file: TaskFile;
   tracker: TaskTracker;
   peer: TaskPeer;
-};
+}
 
 export interface DownloadTask {
   id: String;
@@ -82,7 +82,7 @@ export interface DownloadTask {
   status_friendly?: String;
   status_extra: TaskStatusExtra;
   additional: TaskAdditional;
-};
+}
 
 
 const validateAdditional = (additional:String):Boolean => {
@@ -103,14 +103,15 @@ const validateAdditional = (additional:String):Boolean => {
 export interface ListTaskParams {
   offset?: Number;
   limit?: Number;
-  additional?: String; /** Comma-separated, including detail/transfers/file/tracker/peer */
-};
+  /** Comma-separated, including detail / transfers / file / tracker / peer */
+  additional?: String;
+}
 
 export interface ListTaskResponse {
   total: Number;
   offset: Number;
   tasks: DownloadTask[];
-};
+}
 
 
 const addStatusDescriptions = (
@@ -118,13 +119,12 @@ const addStatusDescriptions = (
 ):DownloadTask[] => tasks.map((task) => {
   const taskWithDescriptions = {
     ...task,
-    status_friendly: TaskStatus[status] || 'Unknown',
+    status_friendly: TaskStatus[`${task.status}`] || 'Unknown',
   };
 
-  const { status_extra } = task;
-  if (status_extra) {
-    const friendlyType = TaskErrorTypes[`${status_extra.error_detail}`];
-    task.status_extra.error_detail_friendly = friendlyType;
+  if (task.status_extra) {
+    const friendlyType = TaskErrorTypes[`${task.status_extra.error_detail}`];
+    taskWithDescriptions.status_extra.error_detail_friendly = friendlyType;
   }
 
   return taskWithDescriptions;
@@ -156,12 +156,12 @@ export const listDownloadTasks = async (
 export interface GetTaskParams {
   id: String; /** Comma-separated IDs */
   additional?: String; /** Comma-separated, including detail/transfers/file/tracker/peer */
-};
+}
 
 
 export interface GetTaskResponse {
   tasks: DownloadTask[];
-};
+}
 
 
 export const getDownloadTaskInfo = async (
@@ -194,7 +194,7 @@ export interface CreateTaskParams {
   password?: String;
   unzip_password?: String;
   destination?: String;
-};
+}
 
 export const createDownloadTask = async (
   api: AxiosInstance,
@@ -216,13 +216,13 @@ export const createDownloadTask = async (
 export interface DeleteTaskParams {
   id: String;
   force_complete: Boolean; /** delete task and move uncompleted downloads to destination */
-};
+}
 
 export interface DeleteTaskResponse {
   id: String;
   error: Number;
   status: String;
-};
+}
 
 export const deletDownloadTask = async (
   api: AxiosInstance,
@@ -244,13 +244,13 @@ export const deletDownloadTask = async (
 
 export interface PauseTaskParams {
   id: String;
-};
+}
 
 export interface PauseTaskResponse {
   id: String;
   error: Number;
   status: String;
-};
+}
 
 export const pauseDownloadTask = async (
   api: AxiosInstance,
@@ -273,13 +273,13 @@ export const pauseDownloadTask = async (
 
 export interface ResumeTaskParams {
   id: String;
-};
+}
 
 export interface ResumeTaskResponse {
   id: String;
   error: Number;
   status: String;
-};
+}
 
 export const resumeDownloadTask = async (
   api: AxiosInstance,
@@ -303,13 +303,13 @@ export const resumeDownloadTask = async (
 export interface EditTaskParams {
   id: String;
   destination: String;
-};
+}
 
 export interface EditTaskResponse {
   id: String;
   error: Number;
   status: String;
-};
+}
 
 export const editDownloadTaskDestination = async (
   api: AxiosInstance,

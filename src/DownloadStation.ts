@@ -1,4 +1,4 @@
-import SynologyAPI from "./SynologyApi";
+import { SynologyApi } from './SynologyApi.def';
 
 import {
   getInfo,
@@ -8,9 +8,9 @@ import {
   ServerConfig,
 } from './info';
 
-import { getStatistics, StatisticsResponse } from "./statistic";
+import { getStatistics, StatisticsResponse } from './statistic';
 
-import { getScheduleConfig, setScheduleConfig, ScheduleConfigOptions } from "./schedule";
+import { getScheduleConfig, setScheduleConfig, ScheduleConfigOptions } from './schedule';
 
 
 export interface DownloadStation {
@@ -22,11 +22,11 @@ export interface DownloadStation {
 
   getScheduleConfig(): Promise<ScheduleConfigOptions>;
   setScheduleConfig(params: ScheduleConfigOptions): Promise<any>;
-};
+}
 
 
 const DownloadStation = (
-  synoApi:SynologyAPI,
+  synoApi:SynologyApi,
 ):DownloadStation => ({
   // info.ts
   getInfo: () => getInfo(synoApi.api),

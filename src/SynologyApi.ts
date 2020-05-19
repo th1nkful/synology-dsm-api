@@ -1,18 +1,22 @@
 import axios, { AxiosInstance } from 'axios';
+
+import { SynologyApi as SynoApi, Session } from './SynologyApi.def';
+
 import ds, { DownloadStation } from './DownloadStation';
 import fs, { FileStation } from './FileStation';
 
-export enum Session {
-  Download = 'DownloadStation',
-  File = 'FileStation',
-}
 
-class SynologyAPI {
+class SynologyAPI implements SynoApi {
   account: String;
+
   password: String;
+
   api: AxiosInstance;
+
   session: Session | undefined;
+
   downloadStation: DownloadStation | undefined;
+
   fileStation: FileStation | undefined;
 
   constructor(server:String, account:String, password:String) {

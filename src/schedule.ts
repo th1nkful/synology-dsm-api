@@ -1,10 +1,10 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 
 export interface ScheduleConfigOptions {
   enabled:Boolean; /** If download schedule is enabled */
   emule_enabled:Boolean; /** If eMule download schedule is enabled */
-};
+}
 
 
 export const getScheduleConfig = async (

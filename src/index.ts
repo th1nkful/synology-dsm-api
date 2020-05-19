@@ -1,4 +1,5 @@
-import SynologyAPI, { Session } from './SynologyApi';
+import SynologyAPI from './SynologyApi';
+import { Session } from './SynologyApi.def';
 
 const setupSynoApi = async (
   server: String, account: String, passwd: String,

@@ -1,10 +1,10 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 export interface ListRssFeedsParams {
   id?: String; /** Comma-separated IDs to list */
   offset?: Number;
   limit?: Number;
-};
+}
 
 export interface RssFeed {
   title: String;
@@ -12,13 +12,13 @@ export interface RssFeed {
   time: Number; /** timestamp */
   download_url: String;
   external_link: String;
-};
+}
 
 export interface ListRssFeedsResponse {
   total:Number;
   offset:Number;
   feeds: RssFeed[];
-};
+}
 
 export const listRssFeeds = async (
   api: AxiosInstance,

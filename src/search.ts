@@ -1,4 +1,4 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 
 export const SearchErrors = {
@@ -14,11 +14,11 @@ export const SearchErrors = {
 export interface SearchStartParams {
   module: 'all'|'enabled';
   keyword: String;
-};
+}
 
 export interface SearchStartResponse {
   taskid: String;
-};
+}
 
 export const startSearch = async (
   api: AxiosInstance,
@@ -26,6 +26,7 @@ export const startSearch = async (
 ): Promise<SearchStartResponse> => {
   const { data } = await api.get('/DownloadStation/btsearch.cgi', {
     params: {
+      ...params,
       api: 'SYNO.DownloadStation.BTSearch',
       version: 1,
       method: 'start',
@@ -44,7 +45,7 @@ export interface ListSearchParams {
   sort_direction: 'asc'|'desc';
   filter_category: String; /** categoryId from getSearchCategories */
   filter_title: String;
-};
+}
 
 export interface SearchFeedItem {
   title: String;
@@ -56,7 +57,7 @@ export interface SearchFeedItem {
   size: String;
   module_id: String;
   module_title: String;
-};
+}
 
 export interface ListSearchResponse {
   taskid: String;
@@ -64,7 +65,7 @@ export interface ListSearchResponse {
   offset: Number;
   total: Number;
   items: SearchFeedItem[];
-};
+}
 
 export const listSearches = async (
   api: AxiosInstance,
@@ -86,11 +87,11 @@ export const listSearches = async (
 export interface SearchCategory {
   id: String;
   title: String;
-};
+}
 
 export interface SearchCategoriesResponse {
   categories: SearchCategory[];
-};
+}
 
 export const getSearchCategories = async (
   api: AxiosInstance,
@@ -128,11 +129,11 @@ export interface SearchModule {
   enabled: Boolean;
   id: String;
   title: String;
-};
+}
 
 export interface SearchModulesResponse {
   modules: SearchModule[];
-};
+}
 
 export const getSearchModules = async (
   api: AxiosInstance,

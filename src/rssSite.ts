@@ -1,10 +1,10 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 
 export interface ListParams {
   offset?: Number;
   limit?: Number;
-};
+}
 
 export interface RssSites {
   id: Number;
@@ -13,13 +13,13 @@ export interface RssSites {
   title: String;
   url: String;
   username: String;
-};
+}
 
 export interface ListResponse {
   total: Number;
   offset: Number;
   sites: RssSites[];
-};
+}
 
 export const listRssSite = async (
   api: AxiosInstance,
@@ -40,7 +40,7 @@ export const listRssSite = async (
 
 export interface RefreshParams {
   id: String; /* comma-separated IDs, use 'ALL' for all RSS Sites */
-};
+}
 
 export const refreshRssSites = async (
   api: AxiosInstance,
