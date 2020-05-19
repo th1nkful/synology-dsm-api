@@ -21,7 +21,7 @@ export interface ListResponse {
   sites: RssSites[];
 }
 
-export const listRssSite = async (
+export const listRssSites = async (
   api: AxiosInstance,
   params: ListParams = {},
 ): Promise<ListResponse> => {
