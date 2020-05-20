@@ -7,7 +7,7 @@ Built using TypeScript to provide typings and Intellisense while developing.
 ## Usage
 
 ```
-npm install $PACKAGE_NAME
+npm install synology-dsm-api
 ```
 
 ## Contributors
