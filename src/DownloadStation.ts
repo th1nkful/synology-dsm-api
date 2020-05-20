@@ -25,6 +25,15 @@ import {
   SearchModulesResponse,
 } from './search';
 
+import {
+  listDownloadTasks, getDownloadTaskInfo, createDownloadTask,
+  deletDownloadTask, pauseDownloadTask, resumeDownloadTask,
+  editDownloadTaskDestination, ListTaskParams, ListTaskResponse,
+  GetTaskParams, CreateTaskParams, DeleteTaskParams, PauseTaskParams,
+  ResumeTaskParams, EditTaskParams, EditTaskResponse, ResumeTaskResponse,
+  PauseTaskResponse, DeleteTaskResponse, GetTaskResponse,
+} from './task';
+
 
 export interface DownloadStation {
   getInfo(): Promise<getInfoResponse>;
@@ -46,6 +55,14 @@ export interface DownloadStation {
 
   listRssSites(params: ListParams): Promise<ListResponse>;
   refreshRssSites(options: RefreshParams): Promise<any>;
+
+  listDownloadTasks(params: ListTaskParams): Promise<ListTaskResponse>;
+  getDownloadTaskInfo(params: GetTaskParams): Promise<GetTaskResponse>;
+  createDownloadTask(params: CreateTaskParams): Promise<any>;
+  deletDownloadTask(params: DeleteTaskParams): Promise<DeleteTaskResponse>;
+  pauseDownloadTask(params: PauseTaskParams): Promise<PauseTaskResponse>;
+  resumeDownloadTask(params: ResumeTaskParams): Promise<ResumeTaskResponse>;
+  editDownloadTaskDestination(params: EditTaskParams): Promise<EditTaskResponse>;
 }
 
 
@@ -67,6 +84,15 @@ const DownloadStation = (
   setScheduleConfig: (params: ScheduleConfigOptions) => setScheduleConfig(synoApi.api, params),
 
   // task.ts
+  listDownloadTasks: (params: ListTaskParams) => listDownloadTasks(synoApi.api, params),
+  getDownloadTaskInfo: (params: GetTaskParams) => getDownloadTaskInfo(synoApi.api, params),
+  createDownloadTask: (params: CreateTaskParams) => createDownloadTask(synoApi.api, params),
+  deletDownloadTask: (params: DeleteTaskParams) => deletDownloadTask(synoApi.api, params),
+  pauseDownloadTask: (params: PauseTaskParams) => pauseDownloadTask(synoApi.api, params),
+  resumeDownloadTask: (params: ResumeTaskParams) => resumeDownloadTask(synoApi.api, params),
+  editDownloadTaskDestination: (
+    params: EditTaskParams,
+  ) => editDownloadTaskDestination(synoApi.api, params),
 
   // search.ts
   startSearch: (params: SearchStartParams) => startSearch(synoApi.api, params),

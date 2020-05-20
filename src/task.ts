@@ -255,7 +255,7 @@ export interface PauseTaskResponse {
 export const pauseDownloadTask = async (
   api: AxiosInstance,
   params: PauseTaskParams,
-): Promise<PauseTaskParams> => {
+): Promise<PauseTaskResponse> => {
   const { data } = await api.get('/DownloadStation/task.cgi', {
     params: {
       ...params,
