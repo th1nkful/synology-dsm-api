@@ -1,6 +1,9 @@
 import { SynologyApi } from './SynologyApi.def';
 
-import { listAvailableShares, listSharesFiles, ListAvailableSharesResponse, ListAvailableSharesParams, ListSharesFilesResponse, ListSharesFilesParams } from './shares';
+import {
+  listAvailableShares, listSharesFiles, ListAvailableSharesResponse,
+  ListAvailableSharesParams, ListSharesFilesResponse, ListSharesFilesParams,
+} from './shares';
 
 import { createFolder, rename, CreateFolderParams } from './folders';
 
