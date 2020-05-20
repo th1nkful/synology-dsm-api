@@ -149,8 +149,11 @@ export interface ListSharesFilesResponse {
 
 export const listSharesFiles = async (
   api: AxiosInstance,
-  params: ListAvailableSharesParams = { additional: undefined },
-): Promise<ListAvailableSharesResponse> => {
+  params: ListSharesFilesParams = {
+    folder_path: '/',
+    additional: undefined,
+  },
+): Promise<ListSharesFilesResponse> => {
   const { data } = await api.get('/FileStation/file_share.cgi', {
     params: {
       ...params,

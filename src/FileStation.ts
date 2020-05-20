@@ -1,12 +1,12 @@
 import { SynologyApi } from './SynologyApi.def';
 
-import { listAvailableShares, listSharesFiles } from './shares';
+import { listAvailableShares, listSharesFiles, ListAvailableSharesResponse, ListAvailableSharesParams, ListSharesFilesResponse, ListSharesFilesParams } from './shares';
 
 import { createFolder, rename, CreateFolderParams } from './folders';
 
 export interface FileStation {
-  listShares(): Promise<any>;
-  listShare(): Promise<any>;
+  listAvailableShares(params: ListAvailableSharesParams): Promise<ListAvailableSharesResponse>;
+  listShare(params: ListSharesFilesParams): Promise<ListSharesFilesResponse>;
   createFolder(path: String, name: String, options: CreateFolderParams): Promise<any>;
   renameFolder(path: String, name: String): Promise<any>;
   renameFile(path: String, name: String): Promise<any>;
@@ -16,8 +16,10 @@ const FileStation = (
   synoApi: SynologyApi,
 ):FileStation => ({
   // shares.ts
-  listShares: () => listAvailableShares(synoApi.api),
-  listShare: () => listSharesFiles(synoApi.api),
+  listAvailableShares: (
+    params: ListAvailableSharesParams,
+  ) => listAvailableShares(synoApi.api, params),
+  listShare: (params: ListSharesFilesParams) => listSharesFiles(synoApi.api, params),
 
   // folders.ts
   createFolder: (
