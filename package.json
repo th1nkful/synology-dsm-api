@@ -1,6 +1,6 @@
 {
   "name": "synology-dsm-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wrapper for the Synology API to use Download Station and File Station APIs.",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
