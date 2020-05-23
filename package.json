@@ -1,7 +1,7 @@
 {
   "name": "synology-dsm-api",
   "version": "1.0.2",
-  "description": "",
+  "description": "Wrapper for the Synology API to use Download Station and File Station APIs.",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
   "directories": {
@@ -39,5 +39,19 @@
     "prepare": "npm run lint && npm run build"
   },
   "author": "punshonjm",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punshonjm/synology-dsm-api.git"
+  },
+  "keywords": [
+    "synology",
+    "dms",
+    "download station",
+    "file station"
+  ],
+  "bugs": {
+    "url": "https://github.com/punshonjm/synology-dsm-api/issues"
+  },
+  "homepage": "https://github.com/punshonjm/synology-dsm-api#readme"
 }
